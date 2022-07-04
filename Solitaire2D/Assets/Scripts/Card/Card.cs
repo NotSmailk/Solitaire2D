@@ -177,7 +177,7 @@ public class Card : MonoBehaviour
             if (card == null)
                 continue;
 
-            if (hit != cardCollider && card.isFaceUp && card.transform.childCount == 0)
+            if (hit != cardCollider && card.isFaceUp && card.transform.childCount == 0 && card.curFoundationPile == null)
             {
                 isCollected = false;
 
