@@ -38,8 +38,6 @@ public class SaveManager : MonoBehaviour
 
     public static void LoadSkins(out SkinData data)
     {
-        data = null;
-
         InitializeFolder();
 
         string loadPath = $"{savesFolder}/skins.dat";
