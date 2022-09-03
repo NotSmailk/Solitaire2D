@@ -17,6 +17,10 @@ public class SFXManager : MonoBehaviour
 
     private void Awake()
     {
+        OnPickUp.RemoveAllListeners();
+        OnPutDown.RemoveAllListeners();
+        OnCardSwipe.RemoveAllListeners();
+
         OnPickUp.AddListener(PickUpPlay);
         OnPutDown.AddListener(PutDownPlay);
         OnCardSwipe.AddListener(CardSwipePlay);

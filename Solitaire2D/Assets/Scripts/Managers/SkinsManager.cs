@@ -1,20 +1,30 @@
+using System;
 using UnityEngine;
+
+public class SkinData
+{
+    public Sprite cardBack;
+    public Color cardTableColor = new Color(0f, 98f, 0f);
+}
 
 public class SkinsManager : MonoBehaviour
 {
     [Header("Settings")]
-    [field: SerializeField] public Color cardTableColor = new Color(0f, 98f, 0f);
-    [field: SerializeField] public Sprite currentCardBack;
-    [field: SerializeField] public Sprite[] cardBacks;
-    [field: SerializeField] public Sprite[] cardFaces;
+    public Color cardTableColor = new Color(0f, 98f, 0f);
+    public Sprite currentCardBack;
+    public Sprite[] cardBacks;
+    public Sprite[] cardFaces;
+
     [Header("Main Objects")]
-    [field: SerializeField] public Camera mainCamera;
+    public Camera mainCamera;
 
     public static SkinsManager GlobalSkinsManager;
 
     private void Awake()
     {
         GlobalSkinsManager = this;
+
+        LoadSkinsData();
     }
 
     private void Start()
@@ -24,6 +34,8 @@ public class SkinsManager : MonoBehaviour
 
     public void ChangeCardsBack()
     {
+        SaveSkinsData();
+
         foreach (Card card in FindObjectsOfType<Card>())
         {
             card.SetCardBack(currentCardBack);
@@ -34,6 +46,32 @@ public class SkinsManager : MonoBehaviour
 
     public void ChangeBackColor()
     {
+        SaveSkinsData();
+
         mainCamera.backgroundColor = cardTableColor;
+    }
+
+    public void SaveSkinsData()
+    {
+        SkinData skinData = new SkinData();
+
+        skinData.cardTableColor = cardTableColor;
+        skinData.cardBack = currentCardBack;
+
+        SaveManager.SaveSkins(skinData);
+    }
+
+    public void LoadSkinsData()
+    {
+        SaveManager.LoadSkins(out SkinData skinData);
+
+        if (skinData == null)
+            return;
+
+        if (skinData.cardBack != null)
+            currentCardBack = skinData.cardBack;
+
+        if (skinData.cardTableColor != null)
+            cardTableColor = skinData.cardTableColor;
     }
 }

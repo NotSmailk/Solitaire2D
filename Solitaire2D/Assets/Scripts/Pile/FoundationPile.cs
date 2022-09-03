@@ -43,9 +43,9 @@ public class FoundationPile : MonoBehaviour
         currentCardIndex--;
         nextCardValue--;
 
-        if (currentCardIndex > 0)
+        if (currentCardIndex >= 0)
         {
-            cards[currentCardIndex - 1].SetActive(true);
+            cards[currentCardIndex].SetActive(true);
         }
 
         if (card.GetCardInfo().Value == CardValue.King)

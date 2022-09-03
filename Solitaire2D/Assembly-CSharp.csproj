@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\Managers\SkinsManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SFXManager.cs" />
     <Compile Include="Assets\Scripts\Pile\DealRow.cs" />
+    <Compile Include="Assets\Scripts\Managers\SaveManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

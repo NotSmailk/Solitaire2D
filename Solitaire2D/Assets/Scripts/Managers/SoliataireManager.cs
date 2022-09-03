@@ -41,6 +41,8 @@ public class SoliataireManager : MonoBehaviour
     private void Awake()
     {
         GlobalSoliataireManager = this;
+
+        DontDestroyOnLoad(this);
     }
 
     private void Start()
