@@ -68,10 +68,8 @@ public class SkinsManager : MonoBehaviour
         if (skinData == null)
             return;
 
-        if (skinData.cardBack != null)
-            currentCardBack = skinData.cardBack;
+        currentCardBack = skinData.cardBack == null ? cardBacks[0] : skinData.cardBack;
 
-        if (skinData.cardTableColor != null)
-            cardTableColor = skinData.cardTableColor;
+        cardTableColor = skinData.cardTableColor == null ? new Color(0f, 98f, 0f) : skinData.cardTableColor;
     }
 }
